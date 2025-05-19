@@ -1,0 +1,52 @@
+/* Reset margin for body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin-top: 70px;
+  }
+  
+  /* Hero image height */
+  .hero-img {
+    height: 85vh;
+    object-fit: cover;
+    filter: brightness(70%);
+  }
+  
+  /* Card hover effect */
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  /* Navbar brand styling */
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Carousel caption */
+  .carousel-caption {
+    bottom: 20%;
+  }
+  
+  /* Text size tweaks */
+  h1, h2 {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  #btn{
+    margin-top: 3vw;
+    margin-left: 6vw;
+  }
+
+  #pngimg{
+    height: 40vw;
+    width: 30vw;
+    margin-left: 60vw;
+  }

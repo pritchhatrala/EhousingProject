@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GharConnect - E-Housing Platform</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/index.css"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-secondary fixed-top shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">GharConnect</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/sellhouse">Sell House</a></li>
+        <li class="nav-item"><a class="nav-link" href="/renthouse">Rent House</a></li>
+        <li class="nav-item"><a class="nav-link" href="/complaint">Complaint</a></li>
+      </ul>
+      <form class="d-flex" role="search">
+        <a href="{% url 'logout' %}" class="btn btn-outline-success">Logout</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/static/images/house image 1.jpg" class="d-block w-100 hero-img" alt="house">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 class="display-3 fw-bold text-light">GharConnect</h1>
+        <p class="lead text-light">Smart Living, Simplified</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sell House Section -->
+<hr>
+<h2 style="text-align: center; font-family:Serif;">Available Houses for Sale</h2>
+<hr>
+<div class="container">
+  <div class="row">
+    {% for house in houses %}
+      <div class="col-md-4">
+        <div class="card">
+          {% if house.image %}
+            <img src="{{ house.image.url }}" alt="House Image" class="card-img-top" style="height: 500px;">
+          {% else %}
+            <img src="/static/images/chair image.jpg" alt="House Image" class="card-img-top">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center; text-decoration: underline;">{{ house.name }}</h5>
+            <p class="card-text">Address : {{ house.address }}</p>
+            <p class="card-text">Description : {{ house.description }}</p>
+            <p class="card-text">Price: ₹{{ house.price }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div style="margin-top: 10px;">
+    <a href="{% url 'all_sellhouse' %}" class="btn btn-outline-warning mt-2">View All Sell-Houses</a>
+  </div>
+</div>
+
+<!-- Rent House Section -->
+<hr>
+<h2 class="text-center">Available Houses for Rent</h2>
+<hr>
+<div class="container">
+  <div class="row">
+    {% for house in renthouses %}
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{{ house.image.url }}" alt="House Image" class="card-img-top" style="height: 500px;">
+          <div class="card-body">
+            <h5 class="card-title text-center">Name : {{ house.housename }}</h5>
+            <p class="card-text">Address : {{ house.adress }}</p>
+            <p class="card-text">Description : {{ house.description }}</p>
+            <p class="card-text">rent : ₹{{ house.Monthly_rent }}</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="text-center">
+    <a href="{% url 'all_renthouse' %}" class="btn btn-outline-primary mt-3">View All Rent Houses</a>
+  </div>
+</div>
+
+
+
+<!-- Info Section -->
+<section class="container d-flex flex-column flex-md-row align-items-center py-5">
+  <img src="/static/images/chair image.jpg" class="img-fluid mb-4 mb-md-0" style="max-width: 33vw;" alt="chair">
+  <div class="ms-md-4">
+    <p class="fs-5">
+      Experience a modern and seamless way to manage your residential society.
+      GharConnect bridges the gap between residents, committees, and housing services all in one powerful digital platform.
+      From finding your next home to raising complaints, everything is just a click away.
+    </p>
+  </div>
+</section>
+
+<!-- Second Info Section -->
+<section class="container d-flex flex-column flex-md-row align-items-center py-5">
+  <img src="/static/images/png2.jpg" id="pngimg" alt="second info image" class="img-fluid">
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>View Rent Houses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container my-5">
+    <h2 class="mb-4">Rent House Listings</h2>
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>HouseName</th>
+          <th>Adress</th>
+          <th>Rent</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for house in renthouses %}
+        <tr>
+          <td>{{ house.id }}</td>
+          <td>{{ house.housename }}</td>
+          <td>{{ house.adress }}</td>
+          <td>₹{{ house.Monthly_rent }}</td>
+          <td>{{ house.description }}</td>
+          <td><img src="{{house.image.url}}" height="150" width="150"></td>
+          <td><a class="btn btn-warning mb-1" href="{% url 'updateRentdata' house.id %}">Update</a>
+              <a class="btn btn-danger" href="{% url 'deleteRentdata' house.id %}">Delete</a>
+          </td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6" class="text-center">No rent houses found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

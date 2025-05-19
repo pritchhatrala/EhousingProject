@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel | GharConnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      color: white;
+      padding-top: 20px;
+    }
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      display: block;
+    }
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+    .content {
+      padding: 20px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 sidebar">
+      <h4 class="text-center mb-4">Admin Panel</h4>
+      <a href="/admin_dashboard">Dashboard</a>
+      <a href="/view_sellhouses">View Sell Houses</a>
+      <a href="/view_renthouses">View Rent Houses</a>
+      <a href="/view_complaints">View Complaints</a>
+      <a href="/logout">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9 content">
+      <h2>Welcome, Admin 👋</h2>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card text-white bg-primary">
+            <div class="card-body">
+              <h5 class="card-title">Sell Houses</h5>
+              <p class="card-text">Manage and review all sell house listings.</p>
+              <a href="{% url 'view_sellhouse' %}" class="btn btn-light btn-sm">Manage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card text-white bg-success">
+            <div class="card-body">
+              <h5 class="card-title">Rent Houses</h5>
+              <p class="card-text">Manage and review all rent house listings.</p>
+              <a href="{% url 'view_renthouses' %}" class="btn btn-light btn-sm">Manage</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card text-white bg-danger">
+            <div class="card-body">
+              <h5 class="card-title">Complaints</h5>
+              <p class="card-text">View user complaints and take actions.</p>
+              <a href="{% url 'view_complaints' %}" class="btn btn-light btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more stats/cards if needed -->
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
