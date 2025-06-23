@@ -161,7 +161,6 @@ USE_TZ = False
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -175,14 +174,3 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-
-INSTALLED_APPS += ['cloudinary_storage', 'cloudinary']
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_STORAGE = {
-  'CLOUD_NAME': 'your-cloud-name',
-  'API_KEY': 'your-api-key',
-  'API_SECRET': 'your-api-secret',
-}
