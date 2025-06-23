@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -100,15 +104,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "Ehousing",
-        "USER": "root",
-        "PASSWORD": "",
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
-    }
-}
+    'default': dj_database_url.config(default=config('DATABASE_URL'))
+}   
 
 
 # Password validation
@@ -146,9 +143,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-
-STATIC_ROOT = BASE_DIR / "livestatic"
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
