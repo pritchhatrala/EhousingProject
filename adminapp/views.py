@@ -16,24 +16,36 @@ def admin_logout(request):
 
 
 def admin_login(request):
+    # ✅ Step 1: Check & Create predefined admin if not exists
+    admin_email = 'admin@ehousing.com'
+    admin_username = 'ehousingadmin'
+    admin_password = 'admin123'
+
+    if not User.objects.filter(username=admin_username).exists():
+        User.objects.create_superuser(
+            username=admin_username,
+            email=admin_email,
+            password=admin_password
+        )
+
+    # ✅ Step 2: Normal login process
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
 
         try:
-            # Get all users with the same email (in case multiple users have the same email)
             users = User.objects.filter(email=email)
 
             if users.count() > 1:
-                messages.error(request, "Multiple users found with this email address. Please use a unique email for login.")
+                messages.error(request, "Multiple users found with this email address. Please use a unique email.")
                 return render(request, 'adminapp/admin_login.html')
 
             user = users.first()
 
-            if user.check_password(password) and user.is_staff:
+            if user and user.check_password(password) and user.is_staff:
                 login(request, user)
                 messages.success(request, "You have successfully logged in.")
-                return redirect('admin_dashboard') 
+                return redirect('admin_dashboard')
             else:
                 messages.error(request, "Invalid credentials or you are not an admin.")
         except User.DoesNotExist:
