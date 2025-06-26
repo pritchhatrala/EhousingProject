@@ -41,7 +41,7 @@ class add_renthouse(models.Model):
 class complaint(models.Model):
     name = models.CharField(max_length=20)     
     House_number = models.CharField(max_length=10)
-    mobile = models.BigIntegerField()
+    mobile = models.BigIntegerField(null=True, blank=True)
     complain_detail = models.TextField()
     image = models.ImageField(blank=True, null=True, upload_to="complaints_image/")
 

@@ -29,13 +29,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #SECRET_KEY='django-insecure-sh09oe*x@39yq#)8ggg%=25wi%m$afgfkg@r^ig%bl#z%vq$6='
 
-SECRET_KEY = config('SECRET_KEY', default='django-insecure-sh09oe*x@39yq#)8ggg%=25wi%m$afgfkg@r^ig%bl#z%vq$6=')
+# SECRET_KEY = config('SECRET_KEY', default='django-insecure-sh09oe*x@39yq#)8ggg%=25wi%m$afgfkg@r^ig%bl#z%vq$6=')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -111,20 +111,20 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(default=config('DATABASE_URL'))
-}   
-
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "ehousing",
-#         "USER": "root",
-#         "PASSWORD": "",
-#         "HOST": "127.0.0.1",
-#         "PORT": "3306",
-#     }
-# }
+#     'default': dj_database_url.config(default=config('DATABASE_URL'))
+# }   
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "ehousing",
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
+    }
+}
 
 
 # Password validation
