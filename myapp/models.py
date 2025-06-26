@@ -4,7 +4,7 @@ class signup(models.Model):
     Yourname = models.CharField(max_length=20)
     email = models.EmailField()
     password = models.CharField(max_length=50)
-    mobile = models.CharField(max_length=10)
+    mobile = models.CharField(max_length=15)
 
 
 class login(models.Model):
