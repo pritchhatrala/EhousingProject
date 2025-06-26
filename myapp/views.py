@@ -89,10 +89,6 @@ def complaint(request):
         form = complaintform()
     return render(request,"complaint.html", {'form':form})
 
-
-
-
-
 @login_required(login_url='/login/')
 def sellhouse(request):
     houses = add_sellhouse.objects.all()
@@ -109,9 +105,6 @@ def sellhouse(request):
         form = sellhouseform() 
 
     return render(request, "sellhouse.html", {"form": form, "houses": houses})
-
-
-
 
 @login_required(login_url='/login/')
 def renthouse(request):
@@ -130,8 +123,6 @@ def renthouse(request):
         form = renthouseform()
     return render(request, "renthouse.html", {"form": form, "houses":houses})
 
-
-
 @login_required(login_url='/login/')
 def contact(request):
     if request.method=='POST':
@@ -139,6 +130,7 @@ def contact(request):
         if form.is_valid():
             form.save()
             print("Record Inserted!")
+            return redirect("index")
         else:
             print(form.errors)
     return render(request,'contact.html')
@@ -157,3 +149,6 @@ def all_renthouse(request):
 
 
 
+@login_required
+def profile(request):
+    return render(request, "profile.html")

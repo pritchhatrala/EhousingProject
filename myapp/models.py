@@ -1,5 +1,17 @@
 from django.db import models
 
+class signup(models.Model):
+    Yourname = models.CharField(max_length=20)
+    email = models.EmailField()
+    password = models.CharField(max_length=50)
+    mobile = models.CharField(max_length=10)
+
+
+class login(models.Model):
+    email = models.EmailField()
+    password = models.CharField(max_length=20)
+    
+   
 class contect(models.Model):
     name = models.CharField(max_length=20)     
     email = models.EmailField()
@@ -35,14 +47,4 @@ class complaint(models.Model):
 
 
 
-class signup(models.Model):
-    Housenumber = models.CharField(max_length=20)
-    email = models.EmailField()
-    password = models.CharField(max_length=50)
-    mobile = models.CharField(max_length=15)
 
-class login(models.Model):
-    email = models.EmailField()
-    password = models.CharField(max_length=20)
-    
-   
