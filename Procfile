@@ -1,1 +1,1 @@
-web: gunicorn Ehousing.wsgi
+web: gunicorn Ehousingproject.wsgi
